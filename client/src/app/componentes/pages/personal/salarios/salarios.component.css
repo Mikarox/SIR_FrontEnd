@@ -1,0 +1,5 @@
+span.gbp::before {
+  float: left;
+  content: "\0024"; /* $ */
+  padding: 0px 4px 3px 3px;
+}

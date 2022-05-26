@@ -1,0 +1,23 @@
+span.gbp::before {
+  float: left;
+  content: "\0024"; /* $ */
+  padding: 5px 4px 3px 3px;
+}
+
+span.gbp input {
+  width: 100px !important;
+}
+
+.contrato{
+  display: flex;
+  align-items: stretch;
+}
+
+span.contrato span{
+  margin: 5px 5px 5px 10px;
+}
+
+span.contrato input {
+  width: 100px !important;
+}
+

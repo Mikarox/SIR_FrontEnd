@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <div class="container-fluid">
+    <a class="navbar-brand"  routerLink="" routerLinkActive="active">
+      <img src="../../../../assets/images/LogoSIR.png"  alt="logo" width="200" class="d-inline-block align-text-top">
+    </a>
+    <button class="btn btn-warning btn-sm" type="button"><i class="fas fa-user"></i> {{userEmail}}</button>
+    <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <span class=" d-flex me-auto"></span>
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item me-4 mb-2 ">
+          <button class="btn btn-info btn-lg" type="button"  routerLink="suppliers" routerLinkActive="active"><i class="fas fa-truck"></i> Eventos</button>
+        </li>
+        <li class="nav-item me-4 mb-2">
+          <button class="btn btn-info btn-lg" type="button" routerLink="products" routerLinkActive="active"><i class="fas fa-warehouse"></i> Personal</button>
+        </li>
+        <li class="nav-item me-4 mb-2">
+          <button class="btn btn-info btn-lg" type="button" routerLink="sales" routerLinkActive="active"><i class="fas fa-cash-register"></i> Equipamiento</button>
+        </li>
+        <li class="nav-item me-4 mb-2">
+          <button class="btn btn-info btn-lg" type="button" routerLink="summary" routerLinkActive="active"><i class="fas fa-book"></i> Vehiculos</button>
+        </li>
+        <li class="nav-item me-4 mb-2">
+          <button class="btn btn-light close btn-lg" type="button" on-click="logout()" ><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

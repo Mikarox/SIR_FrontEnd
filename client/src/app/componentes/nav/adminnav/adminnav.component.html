@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <div class="container-fluid">
+    <a class="navbar-brand"  routerLink="/SirHomeAdmin/home" routerLinkActive="active">
+      <img src="../../../../assets/images/LogoSIR.png"  alt="logo" width="200" class="d-inline-block align-text-top">
+    </a>
+    <button class="btn btn-info btn-sm" type="button"><i class="fas fa-user"></i> <span id="msg"></span> {{userName}}</button>
+    <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <span class=" d-flex me-auto"></span>
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item me-4 mb-2 ">
+          <button class="btn btn-info btn-lg" type="button"  routerLink="register" routerLinkActive="active">  <i class="fa-solid fa-square-plus"></i> Crear Cuenta</button>
+        </li>
+        <li class="nav-item me-4 mb-2">
+          <button class="btn btn-info btn-lg" type="button" routerLink="staffadm" routerLinkActive="active"><i class="fa-solid fa-users-gear"></i> Personal</button>
+        </li>
+        <li class="nav-item me-4 mb-2">
+          <button class="btn btn-info btn-lg" type="button" routerLink="vehiculosadm" routerLinkActive="active"><i class="fa fa-truck" aria-hidden="true"></i> Vehículos</button>
+        </li>
+        <li class="nav-item me-4 mb-2 ">
+          <button class="btn btn-info btn-lg" type="button"  routerLink="licenciasadm" routerLinkActive="active"><i class="fa-solid fa-id-card"></i> Licencias</button>
+        </li>
+        <li class="nav-item me-4 mb-2">
+          <button class="btn btn-light close btn-lg" type="button" on-click="logout()" ><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

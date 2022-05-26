@@ -1,0 +1,218 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card text-center">
+    <div class="card-header tituloCard" id='formUsr'> <i class="fa-solid fa-car-side"></i> Vehículos </div>
+    <div class="cardd-body">
+      <div class="container">
+        <p class="separador text-center"><i class="fa-solid fa-car-side"></i> Registro de nuevo Vehículo </p>
+        <button type="button" class="btn btn-primary btn-lg" on-click="showForm()">Registrar Nuevo Vehículo</button>
+        <div class="card text-center" *ngIf="isformShow==true">
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="sendvehiculo($event)">
+              <br>
+
+              <div class="mb-2 form-floating">
+                <input type="text" class="form-control" name="Modelo" formControlName="Modelo"
+                  placeholder="Modelo del Vehiculo">
+                <label style="color: #AEB6BF">Modelo del Vehiculo</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('Modelo')!.errors && form.get('Modelo')!.touched">
+                  <p class="msjErr" *ngIf="form.get('Modelo')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Éste campo es requerido
+                  </p>
+                </div>
+              </div>
+
+              <div class="mb-2 form-floating">
+                <input type="text" class="form-control" name="Placas" formControlName="Placas"
+                  placeholder="Placas del Vehiculo">
+                <label style="color: #AEB6BF">Placas del Vehiculo</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('Placas')!.errors && form.get('Placas')!.touched || existeName">
+                  <p class="msjErr" *ngIf="form.get('Placas')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Éste campo es requerido
+                  </p>
+                </div>
+              </div>
+
+              <div class="mb-2 form-floating">
+                <input type="text" class="form-control" name="Propietario" formControlName="Propietario"
+                  placeholder="Propietario del Vehiculo">
+                <label style="color: #AEB6BF">Propietario del Vehiculo</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('Propietario')!.errors && form.get('Propietario')!.touched">
+                  <p class="msjErr" *ngIf="form.get('Propietario')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Éste campo es requerido
+                  </p>
+
+                </div>
+              </div>
+
+              <div class="mb-2 form-floating">
+                <input type="text" class="form-control" name="NoSerie" formControlName="NoSerie"
+                  placeholder="NoSerie del Vehiculo">
+                <label style="color: #AEB6BF">NoSerie del Vehículo</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('NoSerie')!.errors && form.get('NoSerie')!.touched">
+                  <p class="msjErr" *ngIf="form.get('NoSerie')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Éste campo es requerido
+                  </p>
+                </div>
+              </div>
+
+              <p class="separador2 text-center"> Propiedades del Vehículo a registrar</p>
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-3" *ngFor="let propety of propetyList1; let i=index;">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6 d-md-flex justify-content-md-star">
+                          <h5 class="card-title">{{typeList[i]}}</h5>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 d-md-flex justify-content-md-end">
+                          <button type="button" class="btn btn-danger" on-click="deletePropety(i)"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </div>
+                      <p class="card-text">
+                        <span *ngIf="typeList[i] == 'Seguro'"><b>Provedor:</b> {{propetyList1[i]}} </span>
+                      </p>
+                      <p class="card-text"> <span *ngIf="typeList[i] == 'Seguro'"><b>No. Poliza:</b> </span>
+                        {{propetyList2[i]}}</p>
+
+
+                      <p class="card-text">
+                        <span *ngIf="typeList[i] == 'Seguro'" ><b>Contratacion/Ultima Renovacion</b></span>
+                        <span *ngIf="typeList[i] == 'Verificacion'"><b>Ultima Verificacion:</b></span>
+                        <span *ngIf="typeList[i] == 'Tenencia'"><b>Ultimo Pago:</b> </span> {{propetyList3[i]}}
+                      </p>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br><br>
+              <hr>
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4" *ngIf="ingreso">
+                  <div class="mb-2 form-floating">
+                    <select #type class="form-select form-control " name="type" formControlName="type"
+                      (change)="select()">
+                      <option *ngFor="let type of typePropetyList;" [value]="type">
+                        {{type}}
+                      </option>
+                    </select>
+                    <label style="color: #AEB6BF">Propiedad</label>
+                    <!-- Directiva para mostrar mensajes reactivos -->
+                  </div>
+                </div>
+                <!-- Separacion de lados -->
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <div class="col-sm-12 col-md-12 col-lg-8" *ngIf="see1">
+                    <div class="mb-2 form-floating">
+                      <input #contact type="text" class="form-control" name="propety1" formControlName="propety1"
+                        placeholder="Propiedad">
+                      <label style="color: #AEB6BF">{{p1}}</label>
+                      <!-- Directiva para mostrar mensajes reactivo -->
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-8" *ngIf="see2">
+                    <div class="mb-2 form-floating">
+                      <input #contact type="text" class="form-control" name="propety2" formControlName="propety2"
+                        placeholder="Propiedad 2">
+                      <label style="color: #AEB6BF">{{p2}}</label>
+                      <!-- Directiva para mostrar mensajes reactivo -->
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-lg-8" *ngIf="see3">
+                    <div class="mb-2 form-floating">
+                      <input #contact type="date" class="form-control" name="propety3" formControlName="propety3"
+                        placeholder="Propiedad 3">
+                      <label style="color: #AEB6BF">{{p3}}</label>
+                      <!-- Directiva para mostrar mensajes reactivo -->
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-3">
+                <button type="button" [disabled]="!canAddPropety"
+                  class="btn btn-warning btn-lg d-grid justify-content-md-start" on-click="addPropety()">Añadir
+                  Propiedad</button>
+              </div>
+              <br>
+              <input type="submit" [disabled]="form.invalid || existeName || canAdd" class="btn btn-success btn-lg"
+                value="Registrar">
+            </form>
+          </div>
+        </div>
+        <p class="separador text-center"><i class="fa-solid fa-car-rear"></i> Lista de vehículos registrados <i
+            class="fa-solid fa-truck-pickup"></i></p>
+        <div *ngIf="vehiculosLits.length==0">
+          <h4>Aún no hay vehículo registrado</h4>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let vehiculo of vehiculosLits; let i=index;">
+            <div class="card text-left">
+              <div class="card-header">
+                <b><i>{{vehiculo.Modelo}}</i></b>
+              </div>
+              <div class="card-body">
+                <div class="row  justify-content-start">
+                  <div class="d-flex justify-content-start">
+                    <b><i>Propietario:</i></b> {{vehiculo.Propietario}}
+                  </div>
+                  <div class="d-flex justify-content-start">
+                    <b><i>Placas:</i></b> {{vehiculo.Placas}}
+                  </div>
+
+                  <div class="d-flex justify-content-start">
+                    <b><i>No.Serie:</i></b> {{vehiculo.NumeroSerie}}
+                  </div>
+                  <div class="row justify-content-start"
+                    *ngIf="vehiculo.FK_Tenencia || vehiculo.FK_Seguro  || vehiculo.FK_Verificacion">
+                    <div class="d-flex justify-content-start">
+                      <b><i>Propiedades:</i></b>
+                    </div>
+                    <span *ngIf="vehiculo.FK_Tenencia">
+                      <i> + Tenencia </i>
+                    </span>
+                    <span *ngIf="vehiculo.FK_Seguro">
+                      <i> + Seguro </i>
+                    </span>
+                    <span *ngIf="vehiculo.FK_Verificacion">
+                      <i> + Verificacion </i>
+                    </span>
+                  </div>
+                  <br>
+
+
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div class="row">
+                  <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                    <button type="button" class="btn btn-primary botones"
+                      [routerLink]="'../vehiclesee/'+vehiculo.ID_Vehiculo" routerLinkActive="active"><i class="fas fa-eye"></i></button>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                    <button type="button" class="btn btn-warning botones"
+                      [routerLink]="'../vehicleupdate/'+vehiculo.ID_Vehiculo" routerLinkActive="active"><i
+                        class="fas fa-pencil-alt"></i></button>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                    <button type="button" class="btn btn-danger botones"
+                      on-click="deleteVehiculo(vehiculo.ID_Vehiculo)"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<br> <br>
+<div class="col-md-10 offset-md-1">
+  <div class="card text-center">
+    <div class="card-header tituloCard">
+      {{titulo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-warning botones" [routerLink]="'../../Edit/'+id"
+          routerLinkActive="active"><i class="fas fa-pencil-alt"></i></button>
+
+    </div>
+    <div class="card-body">
+      <div class="container">
+        <br>
+        <br>
+        <div class="card text-card">
+          <div class="card-body">
+
+            <form [formGroup]="form" (ngSubmit)="sendlicencia($event)">
+              <br>
+
+              <div class="row" *ngIf="institucionsee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titleinstitucion}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  {{Institucion}}
+                </div>
+              </div>
+
+              <div class="row" *ngIf="datallesee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titledetalles}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  {{detalles}}
+                </div>
+              </div>
+
+
+
+              <div class="row" *ngIf="fechasee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titlefecha}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  {{fechaadqui | date: 'dd MMMM yyyy'}}
+                </div>
+              </div>
+
+              <div class="row" *ngIf="tiposee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titletipo}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+
+                  <span *ngIf="cantidad != '1'">
+                    <span *ngIf="tipo == '0'">&nbsp; Meses</span>
+                    <span *ngIf="tipo == '1'">&nbsp; Años </span>
+                  </span>
+                  <span *ngIf="cantidad == '1'">
+                    <span *ngIf="tipo == '0'">&nbsp; Mes</span>
+                    <span *ngIf="tipo == '1'">&nbsp; Año </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="cantidadsee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titlecantidad}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  {{cantidad}}
+                </div>
+              </div>
+
+              <div class="row" *ngIf="proxfechasee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titleproxfecha}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  {{proximafecha | date: 'dd MMMM yyyy'}}
+                </div>
+              </div>
+
+
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

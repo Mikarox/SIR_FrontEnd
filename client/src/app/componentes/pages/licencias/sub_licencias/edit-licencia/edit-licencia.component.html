@@ -1,0 +1,140 @@
+<br> <br>
+<div class="col-md-10 offset-md-1">
+  <div class="card text-center">
+    <div class="card-header tituloCard">
+     Editar {{titulo}}
+    </div>
+    <div class="card-body">
+      <div class="container">
+        <br>
+        <br>
+        <div class="card text-card">
+          <div class="card-body">
+
+            <form [formGroup]="form" (ngSubmit)="sendlicencia($event)">
+              <br>
+
+              <div class="row" *ngIf="institucionsee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titleinstitucion}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  <input type="text" class="form-control" name="Institucion" formControlName="Institucion"
+                    placeholder="Nombre">
+                  <div *ngIf="form.get('Institucion')!.errors && form.get('Institucion')!.touched ">
+                    <p class="msjErr" *ngIf="form.get('Institucion')!.hasError('required')">
+                      <i class="fas fa-times-circle"></i> Este campo es requerido
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="datallesee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titledetalles}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  <input type="text" class="form-control" name="Detalles" formControlName="Detalles"
+                    placeholder="Detalles">
+                  <div *ngIf="form.get('Detalles')!.errors && form.get('Detalles')!.touched ">
+                    <p class="msjErr" *ngIf="form.get('Detalles')!.hasError('required')">
+                      <i class="fas fa-times-circle"></i> Este campo es requerido
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row" *ngIf="fechasee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titlefecha}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  <input #fecha type="date" class="form-control" name="Fecha" formControlName="Fecha"
+                    (change)="savedate(fecha.value)">
+                  <div *ngIf="form.get('Fecha')!.errors && form.get('Fecha')!.touched ">
+                    <p class="msjErr" *ngIf="form.get('Fecha')!.hasError('required')">
+                      <i class="fas fa-times-circle"></i> Este campo es requerido
+                    </p>
+                  </div>
+                  <div *ngIf="form.get('Cantidad')!.touched || form.get('Tipo')!.touched">
+                    <p class="msjErr" *ngIf="Fecha == ''">
+                      <i class="fas fa-times-circle"></i> Este necesario Este campo
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="tiposee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titletipo}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  <select #typefecha id="typefecha" name="typefecha" class="form-select form-control"
+                    formControlName="Tipo" (change)="savetipe(typefecha.value)">
+                    <option value="" selected>-- Seleccionar --</option>
+                    <option *ngFor="let option of TypeListFecha; let i=index" [value]="i">
+                      {{option}}
+                    </option>
+                  </select>
+                  <div *ngIf="form.get('Cantidad')!.touched || form.get('Tipo')!.touched">
+                    <p class="msjErr" *ngIf="typeFecha == ''">
+                      <i class="fas fa-times-circle"></i> Este necesario Este campo
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="cantidadsee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titlecantidad}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  <input #cantidad type="number" min="1" class="form-control" name="Cantidad" formControlName="Cantidad"
+                    placeholder="Tiempo (Numero)" (change)="UpdateVencimiento(cantidad.value)">
+                  <div *ngIf="form.get('Cantidad')!.errors && form.get('Cantidad')!.touched ">
+                    <p class="msjErr" *ngIf="form.get('Cantidad')!.hasError('required')">
+                      <i class="fas fa-times-circle"></i> Este campo es requerido
+                    </p>
+
+                  </div>
+                  <div *ngIf="form.get('Cantidad')!.touched || form.get('Tipo')!.touched">
+                    <p class="msjErr" *ngIf="typeFecha == ''">
+                      <i class="fas fa-times-circle"></i> Este necesario seleccionar un tipo
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row" *ngIf="proxfechasee">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                  <p class="separador text-center">{{titleproxfecha}}</p>
+                </div>
+                <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                  <input type="date" class="form-control" name="Vencimiento" formControlName="Vencimiento"
+                    placeholder="Fecha Vencimieno">
+                  <div *ngIf="form.get('Vencimiento')!.errors && form.get('Vencimiento')!.touched ">
+                    <p class="msjErr" *ngIf="form.get('Vencimiento')!.hasError('required')">
+                      <i class="fas fa-times-circle"></i> Este campo es requerido
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+                <button type="submit" class="btn btn-success" [disabled]="form.invalid"
+                  value="Actualizar Datos">Actualizar Datos</button>
+
+
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

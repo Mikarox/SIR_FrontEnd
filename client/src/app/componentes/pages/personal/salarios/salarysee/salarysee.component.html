@@ -1,0 +1,87 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="d-flex justify-content-around tituloCard mt-2 mb-2" id='formUsr'>
+      <div class="mx-auto">
+        <i class="fa-solid fa-file-contract"></i> Informacion de Salario
+      </div>
+      <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+        <button type="button" class="btn btn-warning botones" [routerLink]="'../../SalaryEdit/'+s.ID"
+          routerLinkActive="active"><i class="fas fa-pencil-alt"></i></button>
+      </div>
+
+    </div>
+    <div class="card-body">
+      <div class="row">
+
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Salario diario:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left"> <span class="gbp">{{s.Salario}} </span> </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Antiguedad Dia(s):</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left" > {{s.days}} </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center"> Antiguedad Mes(es):</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left">  {{s.months}} </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center"> Antiguedad Año(s):</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left"> {{s.years}} </p>
+          </div>
+        </div>
+
+
+
+        <div class="card-body">
+
+
+
+          <p class="separador text-center">  Informacion del Personal:  <i class="fa-solid fa-user"></i></p>
+
+        <div class="row">
+
+            <div class="card text-left">
+              <div class="card-header">
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <p class="card-text"> <b><i>Nombre(s):</i></b> {{s.Nombres}} </p>
+                  <p class="card-text"> <b><i>Apellido Paterno:</i></b> {{s.A_paterno}} </p>
+                  <p class="card-text"> <b><i>Apellido Materno:</i></b> {{s.A_materno}} </p>
+
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+
+        </div>
+
+
+          <!-- End Propiedades -->
+        </div>
+        <!-- END CARD -->
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
+<br><br>

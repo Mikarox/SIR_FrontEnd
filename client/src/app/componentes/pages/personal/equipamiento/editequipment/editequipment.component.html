@@ -1,0 +1,66 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="card-header tituloCard" id='formUsr'>Equipamiento</div>
+    <div class="cardd-body">
+      <div class="card text-center">
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="editEquipament($event)">
+
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                <p class="separador text-center">Nombre de Equipamiento:</p>
+              </div>
+              <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                <input type="text" class="form-control" name="Nombre" formControlName="Nombre"
+                  placeholder="Nombre Equipamiento">
+                <div *ngIf="form.get('Nombre')!.errors && form.get('Nombre')!.touched ">
+                  <p class="msjErr" *ngIf="form.get('Nombre')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Este campo es requerido
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                <p class="separador text-center">Detalles :</p>
+              </div>
+              <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+                <input type="text" class="form-control" name="Detalles" formControlName="Detalles"
+                placeholder="Detalles Equipamiento">
+              <div *ngIf="form.get('Nombre')!.errors && form.get('Nombre')!.touched ">
+                <p class="msjErr" *ngIf="form.get('Nombre')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+              </div>
+
+              </div>
+            </div>
+
+
+
+            <div class="row" *ngIf="date">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                <p class="separador text-center"> Fecha Ultima Entrega:</p>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+                <input type="date" class="form-control" name="UltimaFecha" formControlName="UltimaFecha">
+              <div *ngIf="form.get('UltimaFecha')!.errors && form.get('UltimaFecha')!.touched ">
+                <p class="msjErr" *ngIf="form.get('UltimaFecha')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+              </div>
+              </div>
+            </div>
+
+
+            <br>
+            <input type="submit" [disabled]="form.invalid" class="btn btn-success btn-lg" value="Actualizar">
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

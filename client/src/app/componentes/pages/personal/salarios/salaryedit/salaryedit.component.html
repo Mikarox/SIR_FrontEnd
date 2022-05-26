@@ -1,0 +1,106 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="d-flex justify-content-around tituloCard mt-2 mb-2" id='formUsr'>
+      <div class="mx-auto">
+        <i class="fa-solid fa-file-contract"></i> Editar Salario
+      </div>
+    </div>
+    <div class="card-body">
+
+
+
+      <p class="separador text-center"> Informacion del Personal: <i class="fa-solid fa-user"></i></p>
+
+      <div class="row">
+
+        <div class="card text-left">
+          <div class="card-header">
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <p class="card-text"> <b><i>Nombre(s):</i></b> {{s.Nombres}} </p>
+              <p class="card-text"> <b><i>Apellido Paterno:</i></b> {{s.A_paterno}} </p>
+              <p class="card-text"> <b><i>Apellido Materno:</i></b> {{s.A_materno}} </p>
+
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- End Propiedades -->
+    </div>
+
+    <div class="card-body">
+      <p class="separador text-center"> Salario del Personal:</p>
+
+      <div class="row">
+
+
+        <form [formGroup]="form" (ngSubmit)="editSalary($event)">
+
+
+
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+              <p class="separador text-center">Salario:</p>
+            </div>
+            <div class="contenido col-12 col-sm-12 col-md-12 col-lg-9">
+              <input #valor type="number" class="form-control" name="Salario" formControlName="Salario"
+                placeholder="Cantidad (Numero)">
+              <div *ngIf="form.get('Salario')!.errors && form.get('Salario')!.touched ">
+                <p class="msjErr" *ngIf="form.get('Salario')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+                <p class="msjErr" *ngIf="form.get('Salario')!.hasError('min')">
+                  <i class="fas fa-times-circle"></i> Un contrato no puede ser negativo
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+              <p class="separador text-center">Antiguedad Dia(s):</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+              <p class="contenido text-left" > {{s.days}} </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+              <p class="separador text-center"> Antiguedad Mes(es):</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+              <p class="contenido text-left">  {{s.months}} </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+              <p class="separador text-center"> Antiguedad Año(s):</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+              <p class="contenido text-left"> {{s.years}} </p>
+            </div>
+          </div>
+
+          <br>
+          <input type="submit" [disabled]="form.invalid" class="btn btn-success btn-lg" value="Actualizar">
+        </form>
+
+
+
+
+        <!-- END CARD -->
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
+<br><br>

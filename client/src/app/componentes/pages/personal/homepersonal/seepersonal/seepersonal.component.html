@@ -1,0 +1,216 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="d-flex justify-content-around tituloCard mt-2 mb-2" id='formUsr'>
+      <div class="mx-auto">
+        {{personalInfo.Nombres}} {{personalInfo.A_paterno}} {{personalInfo.A_materno}}
+      </div>
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+        <button type="button" class="btn btn-warning botones"
+          [routerLink]="'../../staffupdate/'+personalInfo.ID_Personal" routerLinkActive="active"><i
+            class="fas fa-pencil-alt"></i></button>
+      </div>
+
+    </div>
+    <div class="card-body">
+      <div class="row">
+
+        <!-- Start Cumpleaños -->
+        <div class="col-sm-12 col-md-9 col-lg-6 my-2" *ngIf="personalInfo.FK_Birthday">
+          <div class="card text-left">
+            <div class="card-header text-center">
+              <b><i>Cumpleaños</i></b>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <p class="separador text-center">Cumpleaños:</p>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <p class="contenido text-left"> {{personalInfo.birthday | date: 'dd MMMM YYYY'}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cumpleaños -->
+
+        <!-- Start Salary -->
+        <div class="col-sm-12 col-md-9 col-lg-6 my-2" *ngIf="personalInfo.FK_ID_Contrato">
+          <div class="card text-left">
+            <div class="card-header text-center">
+              <b><i>Contrato</i></b>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <p class="separador text-center">Salario Diario:</p>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <p class="contenido text-left"> $ {{personalInfo.Salario }} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end Salary -->
+        <!-- Start Antigüedad -->
+        <div class="col-sm-12 col-md-9 col-lg-6 my-2" *ngIf="personalInfo.FK_ID_Contrato">
+          <div class="card text-left">
+            <div class="card-header text-center">
+              <b><i>Antigüedad</i></b>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <p class="separador text-center">Antigüedad (Días):</p>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                    <p class="contenido text-left"> {{personalInfo.Antiguedad_days}} </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <p class="separador text-center"> Antigüedad (Meses):</p>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                    <p class="contenido text-left"> {{personalInfo.Antiguedad_months}} </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <p class="separador text-center"> Antigüedad (Años)
+                    <p>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                    <p class="contenido text-left"> {{personalInfo.Antiguedad_years}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end Antiguedad -->
+<!-- Start Contrato -->
+<div class="col-sm-12 col-md-9 col-lg-6 my-2" *ngIf="personalInfo.FK_ID_Contrato">
+  <div class="card text-left">
+    <div class="card-header text-center">
+      <b><i>Contrato</i></b>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <p class="separador text-center">Fecha de Ingreso:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <p class="contenido text-left"> {{personalInfo.Ingreso | date: 'dd MMMM YYYY'}} </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <p class="separador text-center">Contratado:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="contenido text-left"> {{personalInfo.cantidad}} <span *ngIf="personalInfo.CType == '0'">
+                Meses</span><span *ngIf="personalInfo.CType == '2'">INDEFINIDO</span><span
+                *ngIf="personalInfo.CType == '1'"> Años</span> </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <p class="separador text-center">Finalizacion Contrato:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <p class="contenido text-left"> {{personalInfo.FechaContratoEND | date: 'dd  MMMM yyyy'}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Contrato -->
+
+
+        <div class="card-body">
+          <div class="justify-content-center m-1 p-2 align-self-center  col-12 col-sm-12 col-md-12 col-lg-12">
+            <br>
+            <div class="d-flex justify-content-center">
+              <h3><i>Propiedades:</i></h3>
+            </div>
+
+            <p class="separador text-center"><i class="fa-solid fa-screwdriver-wrench"></i> Equipamiento <i
+                class="fa-solid fa-toolbox"></i> </p>
+            <div *ngIf="eqs.length==0">
+              <h4>Este personal no tiene Equipamiento Registrado</h4>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let e of eqs; let i=index;">
+                <div class="card text-left">
+                  <div class="card-header">
+                    <b><i>{{e}}</i></b>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <p class="card-text"> </p>
+                      <p class="card-text"> <b><i>Detalles:</i></b> {{eqdetalles[i]}}</p>
+                      <p class="card-text"></p>
+                    </div>
+                  </div>
+                  <div class="card-footer text-muted">
+                    <b>Siguiente Renovacion: <br></b>
+                    {{eqprox[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <p class="separador text-center"> <i class="fa-solid fa-envelope-open-text"></i> Actas Administrativas: <i
+                class="fa-solid fa-envelope-open-text"></i></p>
+            <div *ngIf="Amotivos.length== 0">
+              <h4>Este personal no tiene Actas Administrativas</h4>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let aa of Amotivos; let i=index;">
+                <div class="card text-left">
+                  <div class="card-header">
+                    <b><i>{{aa}}</i></b>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <p class="card-text"> </p>
+                      <p class="card-text"> <b><i>Detalles:</i></b> {{ADetalles[i]}}</p>
+                      <p class="card-text"></p>
+                    </div>
+                  </div>
+                  <div class="card-footer text-muted">
+                    {{AFechas[i] | date: 'dd MMMM YYYY'}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+          <br>
+
+
+
+          <!-- End Propiedades -->
+        </div>
+        <!-- END CARD -->
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
+<br><br>

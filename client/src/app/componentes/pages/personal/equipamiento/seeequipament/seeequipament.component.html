@@ -1,0 +1,91 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="d-flex justify-content-around tituloCard mt-2 mb-2" id='formUsr'>
+      <div class="mx-auto">
+        <i class="fa-solid fa-toolbox"></i> Informacion del Equipamiento
+      </div>
+      <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+        <button type="button" class="btn btn-warning botones" [routerLink]="'../../EquipamentEdit/'+equipo.ID_Equipo"
+          routerLinkActive="active"><i class="fas fa-pencil-alt"></i></button>
+      </div>
+      <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+        <button type="button" class="btn btn-success botones"
+          on-click="updateEquipment(equipo.ID_Equipo)"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+      </div>
+
+    </div>
+    <div class="card-body">
+      <div class="row">
+
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Nombre del Equipo:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left"> {{equipo.EqNom}}  </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Detalles:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left"> {{equipo.EqDetalles}} </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Ultima Fecha:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left"> {{equipo.EqUltima | date: 'dd MMMM yyyy'}}  </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Proxima fecha Renovacion:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left"> {{equipo.EqProx | date: 'dd MMMM yyyy'}}  </p>
+          </div>
+        </div>
+
+
+
+        <div class="card-body">
+
+
+
+          <p class="separador text-center"> <i class="fa-solid fa-user"></i> personal responsable:  <i class="fa-solid fa-user"></i></p>
+
+        <div class="row">
+
+            <div class="card text-left">
+              <div class="card-header">
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <p class="card-text"> <b><i>Nombre(s):</i></b> {{equipo.Nombres}} </p>
+                  <p class="card-text"> <b><i>Apellido Paterno:</i></b>{{equipo.A_paterno}} </p>
+                  <p class="card-text"> <b><i>Apellido Materno:</i></b>{{equipo.A_materno}} </p>
+
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+
+        </div>
+
+
+          <!-- End Propiedades -->
+        </div>
+        <!-- END CARD -->
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
+<br><br>

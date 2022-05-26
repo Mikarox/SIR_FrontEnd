@@ -1,0 +1,96 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="d-flex justify-content-around tituloCard mt-2 mb-2" id='formUsr'>
+      <div class="mx-auto">
+        Informacion de la Verificacion Vehicular
+      </div>
+      <div class="mx-auto">
+        <button type="button" class="btn btn-warning botones"
+          [routerLink]="'../../VerificacionEdit/'+idV" routerLinkActive="active"><i
+            class="fas fa-pencil-alt"></i></button>
+      </div>
+
+    </div>
+
+  <div class="cardd-bod">
+    <div class="container">
+
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Fecha Ultimo Verificacion:</p>
+          </div>
+          <div class="contenido2 col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-center">{{v.Ultima | date: 'dd MMMM yyyy'}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Fecha Proxima Verificacion:</p>
+          </div>
+          <div class="contenido2 col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-center">{{v.Prox | date: 'dd MMMM yyyy'}}</p>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-around tituloCard mt-2 mb-2" id='formUsr'>
+    <div class="mx-auto">
+      <i class="fas fa-truck"></i>
+      Informacion del Vehiculo
+    </div>
+    <div class="mx-auto">
+
+    </div>
+
+  </div>
+
+    <div class="cardd-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Modelo:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left"> {{v.Modelo}}  </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Placas:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left"> {{v.Placas}} </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">No. Serie:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left"> {{v.NumeroSerie}}  </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Propietario:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left"> {{v.Propietario}}  </p>
+          </div>
+        </div>
+
+        <div class="card">
+
+        <br>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>

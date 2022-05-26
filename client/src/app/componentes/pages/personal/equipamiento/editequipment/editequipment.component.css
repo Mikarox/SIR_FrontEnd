@@ -1,0 +1,46 @@
+.tituloCard{
+  background-color: #47a6ff;
+  color:#ffffff;
+  font-weight: bolder;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+/* titulo que separa las secciones del formulario */
+.separador{
+    background-color: #D9D9D9;
+    color: #000000;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .contenido{
+    color: #000000;
+    padding: 3px;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .separador2{
+    background-color: #ffc107;
+    padding: 3px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+/* mensaje de error indicando campo mal ingresado  */
+  .msjErr{
+    display: block;
+    margin: 0px;
+    font-size: 12px;
+    background-color: #FF9494;
+    color: #FFFFFF;
+    padding: 1px;
+    text-align: center;
+  }
+  .botones{
+
+    font-size: 20px;
+
+  }

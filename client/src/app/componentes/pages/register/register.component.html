@@ -1,0 +1,143 @@
+<div class="container h-100 mt-5">
+  <div class="row align-items-center h-100">
+    <div class="col d-flex justify-content-center">
+      <div class="card text-center" style="width: 30rem;">
+        <div class="card-body">
+          <h2>Crea una cuenta en </h2>
+          <h2>SIRAGS RRHH</h2>
+          <form [formGroup]="form" (ngSubmit)="senduser($event)">
+            <br>
+            <div class="mb-3 form-floating">
+              <input type="email" class="form-control" name="email" formControlName="email" placeholder="e-mail">
+              <label for="floatingPassword" style="color: #AEB6BF">e-mail</label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('email')!.errors && form.get('email')!.touched || existeEmail">
+                <p class="msjErr" *ngIf="form.get('email')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+                <p class="msjErr" *ngIf="form.get('email')!.hasError('pattern')">
+                  <i class="fas fa-times-circle"></i> Este campo no acepta espacios
+                </p>
+                <p class="msjErr" *ngIf="form.get('email')!.hasError('email')">
+                  <i class="fas fa-times-circle"></i> No es un email valido
+                </p>
+                <p class="msjErr" *ngIf="existeEmail">
+                  <i class="fas fa-times-circle"></i> Éste correo ya está siendo utilizado
+                </p>
+              </div>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="nick" class="form-control" name="nick" formControlName="nick" placeholder="nick">
+              <label for="floatingPassword" style="color: #AEB6BF">Nick</label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('nick')!.errors && form.get('nick')!.touched || existeEmail">
+                <p class="msjErr" *ngIf="form.get('nick')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+                <p class="msjErr" *ngIf="form.get('nick')!.hasError('pattern')">
+                  <i class="fas fa-times-circle"></i> Este campo no acepta espacios
+                </p>
+
+              </div>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="password" class="form-control" name="password" formControlName="password"
+                placeholder="Contraseña">
+              <label for="floatingPassword" style="color: #AEB6BF">Contraseña</label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('password')!.errors && form.get('password')!.touched">
+                <p class="msjErr" *ngIf="form.get('password')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+                <p class="msjErr" *ngIf="form.get('password')!.hasError('pattern')">
+                  <i class="fas fa-times-circle"></i> Este campo no acepta espacios
+                </p>
+              </div>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="password" class="form-control" name="pass_conf" formControlName="pass_conf"
+                placeholder="Confirma la contraseña">
+              <label for="floatingPassword" style="color: #AEB6BF">Confirma la contraseña</label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('pass_conf')!.errors && form.get('pass_conf')!.touched || match">
+                <p class="msjErr" *ngIf="form.get('pass_conf')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+                <p class="msjErr" *ngIf="match">
+                  <i class="fas fa-times-circle"></i> Las contraseñas no coinciden
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" name="nombres" formControlName="nombres" placeholder="Nombre(s)">
+              <label for="floatingPassword" style="color: #AEB6BF">Nombre(s)</label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('nombres')!.errors && form.get('nombres')!.touched">
+                <p class="msjErr" *ngIf="form.get('nombres')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" name="A_paterno" formControlName="A_paterno"
+                placeholder="Apellido Paterno">
+              <label for="floatingPassword" style="color: #AEB6BF">Apellido Paterno</label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('A_paterno')!.errors && form.get('A_paterno')!.touched">
+                <p class="msjErr" *ngIf="form.get('A_paterno')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" name="A_materno" formControlName="A_materno"
+                placeholder="Apellido Materno">
+              <label for="floatingPassword" style="color: #AEB6BF">Apellido Materno</label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('A_materno')!.errors && form.get('A_materno')!.touched">
+                <p class="msjErr" *ngIf="form.get('A_materno')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-3 form-floating">
+              <input type="date" class="form-control" name="birthday" formControlName="birthday"
+                placeholder="Fecha cumpleaños">
+              <label for="floatingPassword" style="color: #AEB6BF">Fecha cumpleaños <i class="fa fa-birthday-cake"
+                aria-hidden="true"></i> </label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('birthday')!.errors && form.get('birthday')!.touched">
+                <p class="msjErr" *ngIf="form.get('birthday')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-3 form-floating">
+              <div class="form-check form-switch  align-items-center">
+                <label class="form-check-label" for="flexSwitchCheckDefault" name="admin">Modo Administrador</label>
+                <input class="form-check-input" type="checkbox" formControlName="admin" name="admin">
+                <div *ngIf="form.get('admin')!.touched">
+                  <p class="msjErr" *ngIf="check">
+                    <i class="fas fa-times-circle"></i> La cuenta sera un administrador
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div *ngIf="msjErr != '' ">
+              <p class="msjErr2"><i class="fas fa-times-circle"></i> {{ msjErr }}</p>
+            </div>
+            <input type="submit" [disabled]="form.invalid" class="btn btn-primary btn-lg"
+              value="Crear cuenta">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

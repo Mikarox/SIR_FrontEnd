@@ -1,0 +1,11 @@
+.navbar-brand img{
+  border-radius: 5%;
+  background-color: #c6eefa;
+  border-radius: 20px;
+}
+.navbar{
+ background-image: url('https://images.builderservices.io/s/cdn/v1.0/i/m?url=https%3A%2F%2Fstorage.googleapis.com%2Fproduction-hostgator-mexico-v1-0-2%2F052%2F1081052%2Fyh6Gb0nJ%2F91274baa3e3349c89035d3665b73d384&methods=resize%2C2000%2C5000');;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}

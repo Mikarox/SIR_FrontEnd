@@ -1,0 +1,177 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card text-center">
+    <div class="card-header tituloCard" id='eventosproximos'><i class="fa-solid fa-calendar-xmark"></i> Eventos Proximos
+      <i class="fa-solid fa-calendar-xmark"></i>
+    </div>
+    <div class="cardd-body">
+      <div class="container">
+        <div *ngIf="eventList.length==0">
+          <h4>Aún no hay Eventos Proximos</h4>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let event of eventList; let i=index;">
+            <div class="card text-left">
+              <div class="card-header">
+                <!-- span dependiendo evento -->
+                <!-- Personal -->
+                <span *ngIf="event.Asunto == 'Equipamiento'"> <b><i>Renovacion de Equipo</i></b></span>
+                <span *ngIf="event.Asunto == 'Ingreso'"> <b><i>Aniversario de Ingreso</i></b></span>
+                <span *ngIf="event.Asunto == 'Contrato'"> <b><i>Finalizacion de Contrato</i></b></span>
+                <!-- Vechiculo -->
+                <span *ngIf="event.Asunto == 'Verificacion'"> <b><i>Verificacion Vehicular</i></b></span>
+                <span *ngIf="event.Asunto == 'Tenencia'"> <b><i>Tenencia Vehicular</i></b></span>
+                <span *ngIf="event.Asunto == 'Seguro'"> <b><i>Vencimiento de Seguro</i></b></span>
+                <!-- Licencias y Pagos -->
+                <span *ngIf="event.Asunto == 'Garantias'"> <b><i>Vencimiento de Garantia</i></b></span>
+                <span *ngIf="event.Asunto == 'Servicios'"> <b><i>Prox Pago de Servicio</i></b></span>
+                <span *ngIf="event.Asunto == 'Licencias'"> <b><i>Vencimiento de Licencia</i></b></span>
+                <span *ngIf="event.Asunto == 'Fecha'"> <b><i>Dia Festivo</i></b></span>
+
+              </div>
+              <div class="card-body">
+                <div class="row justify-content-start">
+                  <div class="d-flex justify-content-start">
+                    <span *ngIf="event.Asunto == 'Equipamiento'"> <b>Personal Responsable:</b> <br>  {{event.Nombres}}  {{event.A_paterno}}  {{event.A_materno}} </span>
+                    <span *ngIf="event.Asunto == 'Ingreso'">  <b>Ingreso de :</b> <br>  {{event.Nombres}}  {{event.A_paterno}}  {{event.A_materno}}</span>
+                    <span *ngIf="event.Asunto == 'Contrato'">  <b>Contrato de :</b> <br> {{event.Nombres}}  {{event.A_paterno}}  {{event.A_materno}}</span>
+                    <span *ngIf="event.Asunto == 'Tenencia'"> <b>Tenencia del Vehiculo:</b><br>  {{event.Nombres}} </span>
+                    <span *ngIf="event.Asunto == 'Verificacion'"> <b>Verificacion del Vehiculo:</b>  <br> {{event.Nombres}} </span>
+                    <span *ngIf="event.Asunto == 'Seguro'"> <b>Seguro del Vehiculo:</b> <br> {{event.Nombres}} </span>
+                    <!-- Licencias y Pagos -->
+                    <span *ngIf="event.Asunto == 'Garantias'"> <b><i>Vencimiento de Garantia</i></b>{{event.EqNom}} </span>
+                    <span *ngIf="event.Asunto == 'Servicios'"> <b><i>Prox Pago de Servicio</i></b> {{event.EqNom}}</span>
+                    <span *ngIf="event.Asunto == 'Licencias'"> <b><i>Vencimiento de Licencia</i></b>{{event.EqNom}} </span>
+                    <!-- Dias Festivos -->
+                    <span *ngIf="event.Asunto == 'Fecha'"> <b><i>Fecha <br> Conmemorativa: </i></b>{{event.EqNom}} </span>
+                  </div>
+                  <div class="d-flex justify-content-start">
+                    <span *ngIf="event.Asunto == 'Equipamiento'"> <b>Equipo a Renovar: </b> <br> {{event.EqNom}}</span>
+                    <span *ngIf="event.EqNom == '0' || event.EqNom == '1' || event.EqNom == '2' "> <b>Con un contrato:</b> <br>
+                    <span  *ngIf="event.EqNom == '0'"> {{event.Detalles}} Meses</span>
+                    <span  *ngIf="event.EqNom == '1'"> {{event.Detalles}} Años</span>
+                    </span>
+                    <!-- Vechiculo -->
+                    <!-- Licencias y Pagos -->
+                    <span *ngIf="event.Asunto == 'Garantias'"> <b><i>Details:</i></b>{{event.Detalles}}</span>
+                    <span *ngIf="event.Asunto == 'Servicios'"> <b><i>Details:</i></b>{{event.Detalles}}</span>
+                    <span *ngIf="event.Asunto == 'Licencias'"> <b><i>Details:</i></b>{{event.Detalles}}</span>
+                    <span *ngIf="event.Asunto == 'Fecha'"> <b><i>Details:</i></b>{{event.Detalles}}</span>
+                    <!-- Dias Festivos -->
+
+                  </div>
+                  <div class="d-flex justify-content-start">
+
+                    <!-- Vechiculo -->
+                    <span *ngIf="event.Asunto == 'Verificacion'"> <b><i>Propietario: </i></b> <br> {{event.A_materno}} </span>
+                    <span *ngIf="event.Asunto == 'Tenencia'"> <b><i></i></b></span>
+                    <!-- Licencias y Pagos -->
+                    <span *ngIf="event.Asunto == 'Garantias'"> <b><i>Sucede Cada: </i></b> <span *ngIf="event.Nombres != '1'"> {{event.A_paterno}}
+                      <span *ngIf="event.Nombres  == '0'">&nbsp; Meses</span>
+                      <span *ngIf="event.Nombres  == '1'">&nbsp; Años </span>
+                    </span>
+                    <span *ngIf="event.A_paterno == '1'">
+                      <span *ngIf="event.Nombres  == '0'">&nbsp; Mes</span>
+                      <span *ngIf="event.Nombres  == '1'">&nbsp; Año </span>
+                    </span> </span>
+                    <span *ngIf="event.Asunto == 'Servicios'"> <b><i>Sucede Cada: </i></b> Mes</span>
+                    <span *ngIf="event.Asunto == 'Licencias'"> <b><i></i></b><br> </span>
+                    <span *ngIf="event.Asunto == 'Fecha'"> <b><i></i></b><br> </span>
+                    <!-- Dias Festivos -->
+
+                  </div>
+                  <div class="d-flex justify-content-start">
+
+                    <!-- Vechiculo -->
+                    <span *ngIf="event.Asunto == 'Verificacion'"> <b><i> </i></b><br> </span>
+                    <span *ngIf="event.Asunto == 'Tenencia'"> <b><i></i></b><br></span>
+                    <span *ngIf="event.Asunto == 'Seguro'"> <b><i>Propietario:</i></b><br> {{event.A_materno}} </span>
+                    <!-- Licencias y Pagos -->
+                    <span *ngIf="event.Asunto == 'Garantias'"> <b><i></i></b><br></span>
+                    <span *ngIf="event.Asunto == 'Servicios'"> <b><i></i></b><br></span>
+                    <span *ngIf="event.Asunto == 'Licencias'"> <b><i></i></b><br></span>
+                    <!-- Dias Festivos -->
+                    <span *ngIf="event.Asunto == 'Fecha'"> <b><i></i></b><br></span>
+
+
+
+                  </div>
+                  <br>
+                  <div class="d-flex justify-content-around">
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" class="btn btn-primary botones" [routerLink]="'../seeevent/'+event.ID_Fecha"
+                        routerLinkActive="active"><i class="fas fa-eye"></i></button>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" class="btn btn-warning botones" routerLinkActive="active"><i
+                          class="fa-solid fa-repeat"></i></button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div>
+                  <span *ngIf="event.Asunto == 'Equipamiento'"> <b>Proxima Renovacion:</b> <br>{{event.fecha | date: 'dd - MMMM'}} </span>
+                  <span *ngIf="event.Asunto == 'Ingreso'"> <b>Fecha de Ingreso a SIR: </b> <br> {{event.fecha | date: 'dd - MMMM - YYYY'}} </span>
+                  <span *ngIf="event.Asunto == 'Contrato'"> <b>Proximo a vencer el: </b> <br>  {{event.fecha | date: 'dd - MMMM'}}</span>
+                  <span *ngIf="event.Asunto == 'Verificacion'"> <b>Proxima Verificacion: </b> <br>  {{event.fecha | date: 'dd - MMMM'}}</span>
+                  <span *ngIf="event.Asunto == 'Tenencia'"> <b>Proximo Tenencia: </b> <br>  {{event.fecha | date: 'dd - MMMM'}}</span>
+                  <span *ngIf="event.Asunto == 'Seguro'"> <b>Vencimiento de Seguro: </b> <br>  {{event.fecha | date: 'dd - MMMM'}}</span>
+                  <span *ngIf="event.Asunto == 'Garantias'"> <b>Vencimiento de Garantia: </b> <br>  {{event.fecha | date: 'dd - MMMM'}}</span>
+                  <span *ngIf="event.Asunto == 'Servicios'"> <b>Proximo Pago de Servicio: </b> <br>  {{event.fecha | date: 'dd - MMMM'}}</span>
+                  <span *ngIf="event.Asunto == 'Licencias'"> <b>Vencimiento de Licencia: </b> <br>  {{event.fecha | date: 'dd - MMMM'}}</span>
+                  <span *ngIf="event.Asunto == 'Fecha'"> <b>Fecha: </b> <br>  {{event.fecha | date: 'dd - MMMM'}}</span>
+
+                </div>
+
+              </div>
+            </div>
+            <br>
+
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card text-center">
+    <div class="card-header tituloCard" id='Cumpleañosproximos'><i class="fa fa-birthday-cake" aria-hidden="true"></i>
+      Cumpleaños Proximos <i class="fa fa-birthday-cake" aria-hidden="true"></i></div>
+    <div class="cardd-body">
+      <div class="container">
+        <div *ngIf="birthdayList.length==0">
+          <h4>Aún no hay Cumplea Proximos</h4>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let birthday of birthdayList; let i=index;">
+            <div class="card text-left">
+              <div class="card-header">
+                <b><i>{{birthday.Nombre}} {{birthday.ApePat}} {{birthday.ApeMat}}</i></b>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="">
+                    <button type="button" class="btn btn-primary botones" [routerLink]="'../staffsee/'+birthday.Id"
+                      routerLinkActive="active"><i class="fas fa-eye"></i></button> Ver Detalles
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                {{birthday.Fecha | date: 'dd - MMMM'}}
+                <i class="fa fa-birthday-cake" aria-hidden="true"></i> en {{birthday.dif}} dias
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

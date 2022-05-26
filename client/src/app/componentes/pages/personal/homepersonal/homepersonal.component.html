@@ -1,0 +1,200 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card text-center">
+    <div class="card-header tituloCard" id='formUsr'><i class="fa-solid fa-user-group"></i> Personal</div>
+    <div class="cardd-body">
+      <div class="container">
+        <p class="separador text-center"><i class="fa-solid fa-user-pen"></i> Registro de nuevo Personal</p>
+        <button type="button" class="btn btn-primary btn-lg" on-click="showForm()">Registrar nuevo Personal</button>
+        <div class="card text-center" *ngIf="isformShow==true">
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="sendpersonal($event)">
+              <br>
+              <div class="mb-2 form-floating">
+                <input type="text" class="form-control" name="Nombres" formControlName="Nombres"
+                  placeholder="Nombre del personal">
+                <label style="color: #AEB6BF">Nombre del personal</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('Nombres')!.errors && form.get('Nombres')!.touched || existeName">
+                  <p class="msjErr" *ngIf="form.get('Nombres')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Éste campo es requerido
+                  </p>
+                  <p class="msjErr" *ngIf="existeName">
+                    <i class="fas fa-times-circle"></i> Éste personal ya existe
+                  </p>
+                </div>
+              </div>
+              <div class="mb-3 form-floating">
+                <input type="text" class="form-control" name="A_paterno" formControlName="A_paterno"
+                  placeholder="Apellido Paterno">
+                <label for="floatingPassword" style="color: #AEB6BF">Apellido Paterno</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('A_paterno')!.errors && form.get('A_paterno')!.touched || existeAp">
+                  <p class="msjErr" *ngIf="form.get('A_paterno')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Este campo es requerido
+                  </p>
+                  <p class="msjErr" *ngIf="existeAp">
+                    <i class="fas fa-times-circle"></i> Éste perosnal con apellido ya existe
+                  </p>
+                </div>
+              </div>
+
+              <div class="mb-3 form-floating">
+                <input type="text" class="form-control" name="A_materno" formControlName="A_materno"
+                  placeholder="Apellido Materno">
+                <label for="floatingPassword" style="color: #AEB6BF">Apellido Materno</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('A_materno')!.errors && form.get('A_materno')!.touched || existeAm">
+                  <p class="msjErr" *ngIf="form.get('A_materno')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Este campo es requerido
+                  </p>
+                  <p class="msjErr" *ngIf="existeAm">
+                    <i class="fas fa-times-circle"></i> Éste personal ya existe
+                  </p>
+                </div>
+              </div>
+
+              <div class="mb-3 form-floating">
+                <input type="date" class="form-control" name="birthday" formControlName="birthday"
+                  placeholder="Fecha cumpleaños">
+                <label for="floatingPassword" style="color: #AEB6BF">Fecha cumpleaños <i class="fa fa-birthday-cake"
+                    aria-hidden="true"></i> </label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('birthday')!.errors && form.get('birthday')!.touched">
+                  <p class="msjErr" *ngIf="form.get('birthday')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Este campo es requerido
+                  </p>
+                </div>
+              </div>
+
+
+              <p class="separador2 text-center"> Propiedades del personal a registrar</p>
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-3" *ngFor="let propety of propetyList1; let i=index;">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6 d-md-flex justify-content-md-star">
+                          <h5 class="card-title">{{typeList[i]}}</h5>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 d-md-flex justify-content-md-end">
+                          <button type="button" class="btn btn-danger" on-click="deletePropety(i)"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </div>
+                      <p class="card-text"> <span *ngIf="typeList[i] == 'Salario'">$</span>  {{propetyList1[i]}} <span *ngIf="propetyList2[i] == '0'"> Meses</span><span *ngIf="propetyList2[i] == '2'">INDEFINIDO</span><span *ngIf="propetyList2[i] == '1'"> Años</span> </p>
+                      <p class="card-text" *ngIf="propetyList2[i] != '0' && propetyList2[i] != '1' && propetyList2[i] != '2' " >{{propetyList2[i]}}</p>
+                      <p class="card-text"><span *ngIf="typeList[i] == 'Ingreso'">Fecha: </span> <span *ngIf="typeList[i] == 'Equipo'">Ultima Entrega: </span> {{propetyList3[i]}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br><br>
+              <hr>
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4"  *ngIf="ingreso">
+                  <div class="mb-2 form-floating">
+                    <select #type class="form-select form-control " name="type" formControlName="type"
+                      (change)="select()">
+                      <option *ngFor="let type of typePropetyList;" [value]="type">
+                        {{type}}
+                      </option>
+                    </select>
+                    <label style="color: #AEB6BF">Propiedad</label>
+                    <!-- Directiva para mostrar mensajes reactivos -->
+                  </div>
+                </div>
+                <!-- Separacion de lados -->
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <div class="col-sm-12 col-md-12 col-lg-8" *ngIf="see4">
+                    <div class="mb-2 form-floating">
+                      <select #propety4 class="form-select form-control" name="propety4" formControlName="propety4" (change)="sel2()">
+                      <option *ngFor="let op of opList; let i=index;" [value]="i">
+                        {{op}}
+                      </option>
+                    </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-8" *ngIf="see1">
+                    <div class="mb-2 form-floating">
+                      <input #contact type="text" class="form-control" name="propety1"
+                        formControlName="propety1" placeholder="Propiedad">
+                      <label style="color: #AEB6BF">{{p1}}</label>
+                      <!-- Directiva para mostrar mensajes reactivo -->
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-8" *ngIf="see2">
+                    <div class="mb-2 form-floating">
+                      <input #contact type="text" class="form-control" name="propety2" formControlName="propety2"
+                        placeholder="Propiedad 2">
+                      <label style="color: #AEB6BF">{{p2}}</label>
+                      <!-- Directiva para mostrar mensajes reactivo -->
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-12 col-lg-8" *ngIf="see3">
+                    <div class="mb-2 form-floating">
+                      <input #contact type="date" class="form-control" name="propety3" formControlName="propety3"
+                        placeholder="Propiedad 3">
+                      <label style="color: #AEB6BF">{{p3}}</label>
+                      <!-- Directiva para mostrar mensajes reactivo -->
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-3">
+                <button type="button" [disabled]="!canAddPropety"
+                  class="btn btn-warning btn-lg d-grid justify-content-md-start" on-click="addPropety()">Añadir
+                  Propiedad</button>
+              </div>
+              <br>
+              <input type="submit" [disabled]="form.invalid || existeName || canAdd" class="btn btn-success btn-lg"
+                value="Registrar">
+            </form>
+          </div>
+        </div>
+        <p class="separador text-center"><i class="fa-solid fa-address-book"></i> Lista de personal registrado <i
+            class="fa-solid fa-address-book"></i></p>
+        <div *ngIf="personalLits.length==0">
+          <h4>Aún no hay personal registrado</h4>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let personal of personalLits; let i=index;">
+            <div class="card text-left">
+              <div class="card-header">
+                <b><i>{{personal.Nombres}}</i></b>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                    <button type="button" class="btn btn-primary botones"
+                      [routerLink]="'../staffsee/'+personal.ID_Personal" routerLinkActive="active"><i
+                        class="fas fa-eye"></i></button>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                    <button type="button" class="btn btn-warning botones"
+                      [routerLink]="'../staffupdate/'+personal.ID_Personal" routerLinkActive="active"><i
+                        class="fas fa-pencil-alt"></i></button>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                    <button type="button" class="btn btn-danger botones"
+                      on-click="deletePersonal(personal.ID_Personal)"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <i class="fa fa-birthday-cake"
+                    aria-hidden="true"></i>
+                {{personal.Fecha | date: 'dd/MM/yyyy'}}
+                <i class="fa fa-birthday-cake"
+                    aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="d-flex justify-content-around tituloCard mt-2 mb-2" id='formUsr'>
+      <div class="mx-auto">
+        <i class="fas fa-truck"></i>
+        Informacion del Vehiculo
+      </div>
+      <div class="mx-auto">
+        <button type="button" class="btn btn-warning botones"
+          [routerLink]="'../../vehicleupdate/'+idVehicle" routerLinkActive="active"><i
+            class="fas fa-pencil-alt"></i></button>
+      </div>
+
+    </div>
+    <div class="cardd-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Modelo:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left"> {{vehiculo.Modelo}}  </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Placas:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left"> {{vehiculo.Placas}} </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">No. Serie:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left"> {{vehiculo.NoSerie}}  </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Propietario:</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left"> {{vehiculo.Propietario}}  </p>
+          </div>
+        </div>
+
+        <div class="card">
+
+        <div class="justify-content-center m-1 p-2 align-self-center  col-12 col-sm-12 col-md-12 col-lg-12">
+          <br>
+          <div class="d-flex justify-content-center">
+            <h3><i>Propiedades:</i></h3>
+          </div>
+
+          <div class="center col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row mx-auto">
+
+              <div class="card mx-auto" style="width:18rem;"  *ngIf="vehiculo.T">
+
+                <div class="card-body">
+                  <h5 class="card-title">Tenencia</h5>
+                  <h6 class="card-subtitle mb-2 text-muted ">Ultima Tenencia Realizada:</h6>
+                  <p class="card-text"> {{vehiculo.UltimoPago  | date: 'dd MMMM YYYY'}} </p>
+                  <h6 class="card-subtitle mb-2 text-muted ">Siguiente Tenencia:</h6>
+                  <p class="card-text"> {{[vehiculo.FechaTenencia | date: 'dd MMMM YYYY']}} </p>
+                </div>
+              </div>
+              <div class="card mx-auto" style="width:18rem;" *ngIf="vehiculo.S" >
+
+                <div class="card-body" >
+                  <h5 class="card-title">Seguro Vehícular</h5>
+                  <h6 class="card-subtitle mb-2 text-muted ">Provedor de Seguro: </h6>
+                  <p class="card-text"> {{vehiculo.Proveedores}} </p>
+                  <h6 class="card-subtitle mb-2 text-muted ">No. Poliza De Seguro: </h6>
+                  <p class="card-text">{{vehiculo.NoPoliza}}</p>
+                  <h6 class="card-subtitle mb-2 text-muted ">Vencimiento: </h6>
+                  <p class="card-text"> {{vehiculo.ProxPagoSeguro | date: 'dd MMMM YYYY'}} </p>
+
+                </div>
+              </div>
+              <div class="card mx-auto" style="width:18rem;"   *ngIf="vehiculo.V" >
+
+                <div class="card-body">
+                  <h5 class="card-title">Verificacion Vehícular</h5>
+                  <h6 class="card-subtitle mb-2 text-muted ">Ultima Verificacion</h6>
+                  <p class="card-text"> {{vehiculo.UltimaV | date: 'dd MMMM YYYY'}} </p>
+                  <h6 class="card-subtitle mb-2 text-muted ">Proxima Verificacion</h6>
+                  <p class="card-text"> {{vehiculo.FechaVerificacion | date: 'dd MMMM YYYY'}} </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <br>
+
+        </div>
+        <br>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
